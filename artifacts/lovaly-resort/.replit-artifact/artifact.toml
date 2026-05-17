@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Lovaly Dream Resort"
+version = "1.0.0"
+id = "artifacts/lovaly-resort"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18606
+
+[services.development]
+run = "pnpm --filter @workspace/lovaly-resort run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/lovaly-resort", "run", "build" ]
+publicDir = "artifacts/lovaly-resort/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18606"
+BASE_PATH = "/"
