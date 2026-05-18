@@ -19,13 +19,7 @@ run = "pnpm --filter @workspace/lovaly-resort run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/lovaly-resort", "run", "build" ]
-publicDir = "artifacts/lovaly-resort/dist/public"
-serve = "static"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+run = "pnpm --filter @workspace/lovaly-resort run start"
 
 [services.env]
 PORT = "18606"
-BASE_PATH = "/"
